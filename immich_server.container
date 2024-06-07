@@ -1,0 +1,18 @@
+[Unit]
+Description=Immich
+
+[Container]
+ContainerName=immich_server
+AutoUpdate=registry
+Environment=DB_HOSTNAME=localhost REDIS_HOSTNAME=localhost DB_USERNAME=postgres DB_DATABASE_NAME=immich DB_PASSWORD=postgres
+Exec=start.sh immich
+Image=ghcr.io/immich-app/immich-server:release
+PodmanArgs=--pod systemd-Immich --requires immich_valkey
+Volume=/home/ksj/library:/usr/src/app/upload
+Volume=/etc/localtime:/etc/localtime:ro
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

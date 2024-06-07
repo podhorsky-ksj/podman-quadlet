@@ -1,0 +1,16 @@
+[Unit]
+Description=Immich
+
+[Container]
+ContainerName=immich_machine_learning
+AutoUpdate=registry
+Image=ghcr.io/immich-app/immich-machine-learning:release
+PodmanArgs=--pod systemd-Immich
+Volume=model-cache:/cache
+Volume=/dev/dri:/dev/dri
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

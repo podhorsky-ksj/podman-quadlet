@@ -1,0 +1,8 @@
+[Unit]
+Description=Immich
+
+[Pod]
+PublishPort=2283:3001
+
+[Install]
+WantedBy=default.target

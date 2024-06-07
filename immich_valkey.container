@@ -1,0 +1,15 @@
+[Unit]
+Description=Immich
+
+[Container]
+ContainerName=immich_valkey
+AutoUpdate=registry
+Image=docker.io/valkey/valkey
+PodmanArgs=--pod systemd-Immich --requires immich_postgres
+Volume=/home/ksj/valkey:/data:U
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
